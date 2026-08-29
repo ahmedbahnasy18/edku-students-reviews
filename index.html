@@ -29,7 +29,7 @@
         body {
             display: flex;
             flex-direction: column;
-            padding: 20px 20px 0 20px; /* إزالة البادينج السفلي */
+            padding: 20px 20px 0 20px;
         }
 
         header {
@@ -61,13 +61,18 @@
             font-size: 0.95rem;
         }
 
+        .instructor-tag span.highlight {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
         .gallery-container {
             max-width: 1350px;
             margin: 25px auto 40px;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            flex: 1; /* يدفع الفوتر للقاع بدون مسافات زائفة */
+            flex: 1;
         }
 
         .row-grid {
@@ -151,7 +156,6 @@
             color: var(--accent-gold);
         }
 
-        /* الفوتر بدون مسافة سفيلة زائدة */
         footer {
             text-align: center;
             color: var(--card-cream);
@@ -175,7 +179,9 @@
     <header>
         <h1>آراء وتقييمات الطلاب كما هي (+40 تقييم) ✨👑</h1>
         <p>انطباعات طلاب أولى ثانوي وثانية بكالوريا عقب المحاضرة الأولى | سلسلة الهندسة العكسية</p>
-        <div class="instructor-tag">المهندس أحمد بهنسي | أول مدرب هندسة برمجيات معتمد من أبل في مصر والشرق الأوسط</div>
+        <div class="instructor-tag">
+            <span class="highlight">المهندس أحمد بهنسي</span> | أول مدرب هندسة برمجيات معتمد من أبل في مصر والشرق الأوسط
+        </div>
     </header>
 
     <div class="gallery-container">
@@ -232,8 +238,8 @@
         <div class="row-grid">
             <div class="img-card" onclick="openModal(this)"><img src="IMG_1292.jpg" alt="محمود عاشور"></div>
             <div class="img-card" onclick="openModal(this)"><img src="IMG_1296.jpg" alt="محمد ابوالوفا"></div>
-            <div class="img-card" onclick="openModal(this)"><img src="IMG_1301.jpg" alt="فريده زيتون"></div>
             <div class="img-card" onclick="openModal(this)"><img src="IMG_1297.jpg" alt="مؤمن صلاح"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1301.jpg" alt="فريده زيتون"></div>
         </div>
 
         <!-- صف 8 -->
