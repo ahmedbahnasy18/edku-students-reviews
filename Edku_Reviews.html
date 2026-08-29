@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آراء وتقييمات الطلاب | المهندس أحمد بهنسي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-green: #1B3B2B;
+            --card-cream: #F5F2E9;
+            --accent-gold: #D4A359;
+            --text-dark: #1E1E1E;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            background-color: var(--bg-green);
+            color: var(--card-cream);
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 20px 0 20px; /* إزالة البادينج السفلي */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 15px 15px;
+            color: var(--card-cream);
+        }
+
+        header h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--accent-gold);
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .instructor-tag {
+            background: rgba(255, 255, 255, 0.08);
+            display: inline-block;
+            padding: 8px 22px;
+            border-radius: 20px;
+            margin-top: 15px;
+            border: 1px solid var(--accent-gold);
+            color: var(--card-cream);
+            font-size: 0.95rem;
+        }
+
+        .gallery-container {
+            max-width: 1350px;
+            margin: 25px auto 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1; /* يدفع الفوتر للقاع بدون مسافات زائفة */
+        }
+
+        .row-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .img-card {
+            background: var(--card-cream);
+            border-radius: 16px;
+            padding: 0;
+            border: 2px solid transparent;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+            cursor: pointer;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .img-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 12px 26px rgba(0,0,0,0.4);
+        }
+
+        .img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        @media (max-width: 950px) {
+            .row-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 550px) {
+            .row-grid { grid-template-columns: repeat(1, 1fr); }
+        }
+
+        /* Lightbox Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-img {
+            max-width: 92%;
+            max-height: 88vh;
+            border-radius: 14px;
+            box-shadow: 0 0 25px rgba(212, 163, 89, 0.5);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            color: var(--card-cream);
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-gold);
+        }
+
+        /* الفوتر بدون مسافة سفيلة زائدة */
+        footer {
+            text-align: center;
+            color: var(--card-cream);
+            margin-top: auto;
+            padding: 20px;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(212, 163, 89, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--bg-green);
+        }
+
+        footer span.gear { color: var(--accent-gold); font-size: 1.1rem; }
+        footer span.highlight { color: var(--accent-gold); font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>آراء وتقييمات الطلاب كما هي (+40 تقييم) ✨👑</h1>
+        <p>انطباعات طلاب أولى ثانوي وثانية بكالوريا عقب المحاضرة الأولى | سلسلة الهندسة العكسية</p>
+        <div class="instructor-tag">المهندس أحمد بهنسي | أول مدرب هندسة برمجيات معتمد من أبل في مصر والشرق الأوسط</div>
+    </header>
+
+    <div class="gallery-container">
+        
+        <!-- صف 1 -->
+        <div class="row-grid">
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1298.jpg" alt="يارا صفار"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1294.jpg" alt="جنات محمد"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1288.jpg" alt="عهد عبد الجليل"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1326.jpg" alt="سيف صلاح"></div>
+        </div>
+
+        <!-- صف 2 -->
+        <div class="row-grid">
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1304.jpg" alt="عمار ياسر ابو دقه"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1290.jpg" alt="آية إبراهيم برمو"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1328.jpg" alt="محمد حسين"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1327.jpg" alt="حبيبه ايمن"></div>
+        </div>
+
+        <!-- صف 3 -->
+        <div class="row-grid">
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1321.jpg" alt="مؤمن اسامه"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1308.jpg" alt="عمرو رضا"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1310.jpg" alt="أحمد عمرو السقيلي"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1316.jpg" alt="رُدينه سعيد الرشيدى"></div>
+        </div>
+
+        <!-- صف 4 -->
+        <div class="row-grid">
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1317.jpg" alt="محمد سعد الدمياطي"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1311.jpg" alt="مهند احمد توتو"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1312.jpg" alt="يوسف محمد"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1314.jpg" alt="عبدالله حسون"></div>
+        </div>
+
+        <!-- صف 5 -->
+        <div class="row-grid">
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1295.jpg" alt="خالد رضا"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1306.jpg" alt="سهيلة المدخوم"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1318.jpg" alt="احمد محمد"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1329.jpg" alt="هاجر السيد برمو"></div>
+        </div>
+
+        <!-- صف 6 -->
+        <div class="row-grid">
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1320.jpg" alt="محمد المصري"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1325.jpg" alt="شمس عماد برمو"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1322.jpg" alt="هاجر مصطفى"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1300.jpg" alt="أمير مصطفي"></div>
+        </div>
+
+        <!-- صف 7 -->
+        <div class="row-grid">
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1292.jpg" alt="محمود عاشور"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1296.jpg" alt="محمد ابوالوفا"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1301.jpg" alt="فريده زيتون"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1297.jpg" alt="مؤمن صلاح"></div>
+        </div>
+
+        <!-- صف 8 -->
+        <div class="row-grid">
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1303.jpg" alt="جنى زيتون"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1305.jpg" alt="احمد اسعد"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1315.jpg" alt="احمد سعد"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1313.jpg" alt="عمر أبو بكر"></div>
+        </div>
+
+        <!-- صف 9 -->
+        <div class="row-grid">
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1287.jpg" alt="عبيده أحمد"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1289.jpg" alt="كريم يوسف"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1309.jpg" alt="محمد مدره"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1307.jpg" alt="ريماس احمد"></div>
+        </div>
+
+        <!-- صف 10 -->
+        <div class="row-grid">
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1293.jpg" alt="أحمد وليد"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1299.jpg" alt="سما عماد"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1319.jpg" alt="عماد توتو"></div>
+            <div class="img-card" onclick="openModal(this)"><img src="IMG_1302.jpg" alt="نيره احمد"></div>
+        </div>
+
+    </div>
+
+    <!-- نافذة التكبير (Modal) -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-img" id="fullImage">
+    </div>
+
+    <footer>
+        <span class="gear">⚙️</span>
+        <span>سلسلة الهندسة العكسية | جميع الحقوق محفوظة © <span class="highlight">المهندس أحمد بهنسي</span></span>
+    </footer>
+
+    <script>
+        function openModal(element) {
+            const modal = document.getElementById('imageModal');
+            const fullImg = document.getElementById('fullImage');
+            const imgSrc = element.querySelector('img').src;
+            fullImg.src = imgSrc;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
